@@ -1,5 +1,44 @@
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body{
   background-color: dodgerblue;
   color: #000;
+}
+
+
+.productlist {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+.product {
+  background-color: #fff;
+  padding: 20px;
+}
+.avatar {
+  width: 100%;
+}
+.price,
+.title {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .productlist{
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (max-width: 540px) {
+  .productlist{
+    grid-template-columns: auto auto;
+  }
+}
+@media (max-width: 540px) {
+  .productlist{
+    grid-template-columns: auto;
+  }
 }
