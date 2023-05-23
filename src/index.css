@@ -3,11 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   background-color: dodgerblue;
   color: #000;
 }
-
 
 .productlist {
   display: grid;
@@ -28,17 +27,17 @@ body{
 }
 
 @media (max-width: 768px) {
-  .productlist{
+  .productlist {
     grid-template-columns: auto auto auto;
   }
 }
 @media (max-width: 540px) {
-  .productlist{
+  .productlist {
     grid-template-columns: auto auto;
   }
 }
 @media (max-width: 540px) {
-  .productlist{
+  .productlist {
     grid-template-columns: auto;
   }
 }
