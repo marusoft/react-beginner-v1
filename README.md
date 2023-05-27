@@ -1,70 +1,409 @@
-# Getting Started with Create React App
+# Introduction to react
+- What is React used For?
+- React setup/Installation.
+- Folder Structure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+- Components
 
-### `npm start`
+```js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+import "./index.css";
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+    </div>
+  );
+};
 
-### `npm test`
+const Product = () => {
+  return (
+    <div className="product">
+      <Image />
+      <ProductPrice />
+      <ProductTitle />
+    </div>
+  );
+};
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const Image = () => (
+  <img className="avatar"
+    src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+    alt="men's clothing"
+  />
+);
 
-### `npm run build`
+const ProductPrice = () => {
+  return <h2 className="price">$ 22.3</h2>;
+};
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const ProductTitle = () => {
+  return <h2 className="title">Mens Casual Premium Slim Fit T-Shirts</h2>;
+};
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+export default ProductList;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+- Introduction to JSX
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
+import "./index.css";
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const img = "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg";
+const price = "$ 22.3";
+const title = "Mens Casual Premium Slim Fit T-Shirts";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+    </div>
+  );
+};
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const Product = () => {
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={title} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+    </div>
+  );
+};
 
-## Learn More
+export default ProductList;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+- props: passing properties dynamically from parent component to child component
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
 
-### Code Splitting
+import "./index.css";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+const img =
+  "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg";
+const price = "$ 22.3";
+const title = "Mens Casual Premium Slim Fit T-Shirts";
 
-### Analyzing the Bundle Size
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      <Product img={img} price={price} title={title} />
+      <Product img={img} price={price} title={title} />
+      <Product img={img} price={price} title={title} />
+      <Product img={img} price={price} title={title} />
+      <Product img={img} price={price} title={title} />
+    </div>
+  );
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+const Product = (props) => {
+  console.log(props)
+  return (
+    <div className="product">
+      <img className="avatar" src={props.img} alt={props.title} />
+      <h2 className="price">{props.price}</h2>
+      <h2 className="title">{props.title}</h2>
+    </div>
+  );
+};
 
-### Making a Progressive Web App
+export default ProductList;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
 
-### Advanced Configuration
+- props: setting up dynamic data with multiple object
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```js
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+const firstProduct = {
+  img: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+  price: 22.3,
+  title: "Mens Casual Premium Slim Fit T-Shirts",
+};
+const secondProduct = {
+  img: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+  price: 109.95,
+  title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+};
+const thirdProduct = {
+  img: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+  price: 55.99,
+  title: "Mens Cotton Jacket",
+};
+const fourthProduct = {
+  img: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+  price: 15.99,
+  title: "Mens Casual Slim Fit",
+};
+const fifthProduct = {
+  img: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+  price: 695,
+  title:
+    "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+};
 
-### `npm run build` fails to minify
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      <Product
+        img={firstProduct.img}
+        price={firstProduct.price}
+        title={firstProduct.title}
+      />
+      <Product
+        img={secondProduct.img}
+        price={secondProduct.price}
+        title={secondProduct.title}
+      />
+      <Product
+        img={thirdProduct.img}
+        price={thirdProduct.price}
+        title={thirdProduct.title}
+      />
+      <Product
+        img={fourthProduct.img}
+        price={fourthProduct.price}
+        title={fourthProduct.title}
+      />
+      <Product
+        img={fifthProduct.img}
+        price={fifthProduct.price}
+        title={fifthProduct.title}
+      />
+    </div>
+  );
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+const Product = (props) => {
+  return (
+    <div className="product">
+      <img className="avatar" src={props.img} alt={props.title} />
+      <h2 className="price">{props.price}</h2>
+      <h2 className="title">{props.title}</h2>
+    </div>
+  );
+};
+
+export default ProductList;
+
+
+```
+
+- Destructuring props
+
+```js
+
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      <Product
+        img={firstProduct.img}
+        price={firstProduct.price}
+        title={firstProduct.title}
+      />
+      <Product
+        img={secondProduct.img}
+        price={secondProduct.price}
+        title={secondProduct.title}
+      />
+    </div>
+  );
+};
+
+const Product = (props) => {
+  const {img, price, title} = props
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={title} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+    </div>
+  );
+};
+
+export default ProductList;
+
+```
+
+- Destructure in function parameter
+
+```js
+
+const Product = ({img, price, title}) => {
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={title} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+    </div>
+  );
+};
+```
+
+- Children props: `children` is a special props in react. 
+  It allows access to everything we render between component
+  tags or anything render between component tags.
+
+```js
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      <Product
+        img={firstProduct.img}
+        price={firstProduct.price}
+        title={firstProduct.title}
+      >
+        {/* children */}
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur rem
+          saepe, eos accusantium suscipit minus.
+        </p>
+        <button>Buy Now</button>
+        {/* children */}
+      </Product>
+
+      <Product
+        img={secondProduct.img}
+        price={secondProduct.price}
+        title={secondProduct.title}
+      />
+    </div>
+  );
+};
+
+const Product = ({ img, price, title, children }) => {
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={title} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+      {children}
+    </div>
+  );
+};
+
+```
+
+- Getting data from an array of object
+
+```js
+const products = [
+  {
+    img: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+    price: 22.3,
+    title: "Mens Casual Premium Slim Fit T-Shirts",
+  },
+  {
+    img: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    price: 109.95,
+    title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+  },
+  {
+    img: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    price: 55.99,
+    title: "Mens Cotton Jacket",
+  },
+  {
+    img: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+    price: 15.99,
+    title: "Mens Casual Slim Fit",
+  },
+  {
+    img: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+    price: 695,
+    title:
+      "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+  },
+];
+
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      {products.map((product) => {
+        const { img, price, title } = product;
+        return <Product img={img} price={price} title={title} />;
+      })}
+    </div>
+  );
+};
+
+const Product = (props) => {
+  const { img, price, title } = props;
+  console.log(props);
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={title} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+    </div>
+  );
+};
+
+```
+
+- Key props
+
+```js
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      {products.map((product, id) => {
+        const { img, price, title } = product;
+        return <Product img={img} price={price} title={title} key={id} />;
+      })}
+    </div>
+  );
+};
+
+const Product = (props) => {
+  const { img, price, title } = props;
+  // console.log(props);
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={title} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+    </div>
+  );
+};
+```
+
+- passing the entire `product` object
+
+```js
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      {products.map((product, id) => {
+        return <Product product={product} key={product.id} />;
+      })}
+    </div>
+  );
+};
+
+const Product = (props) => {
+  const { img, price, title } = props.product;
+  console.log(props);
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={title} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+    </div>
+  );
+};
+```

@@ -13,13 +13,17 @@ body {
   grid-template-columns: auto auto auto auto auto;
   gap: 1rem;
   padding: 1rem;
+  align-items: start;
 }
 .product {
   background-color: #fff;
   padding: 20px;
+  text-align: center;
 }
 .avatar {
-  width: 100%;
+  width: 70%;
+  height: 250px;
+  text-align: center;
 }
 .price,
 .title {
