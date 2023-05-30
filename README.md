@@ -1,17 +1,23 @@
 # Introduction to react
-- What is React used For?
+- What is [React](https://create-react-app.dev/) used For?
   
   A JavaScript library for building user interfaces.
 
 - React setup/Installation.
   
   `npx create-react-app folderName`
+
+  or
+
+  `yarn create react-app my-app`
   
 - Folder Structure
 
 
 
-- Components
+- Components 
+  
+  `<Component />`
 
 ```js
 
@@ -412,4 +418,32 @@ const Product = (props) => {
     </div>
   );
 };
+```
+
+- Using spread operator 
+
+```js
+const ProductList = () => {
+  return (
+    <div className="productlist">
+      {products.map((product) => {
+        return <Product {...product} key={product.id} />;
+      })}
+    </div>
+  );
+};
+
+const Product = (props) => {
+  console.log("PROPS", props);
+  const { img, price, title, altText } = props;
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={altText} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+    </div>
+  );
+};
+
+export default ProductList;
 ```
