@@ -25,23 +25,36 @@ const products = [
 ];
 
 const ProductList = () => {
+  const getProduct = (id) => {
+    const findProduct = products.find((product) => product.id === id);
+    console.log(findProduct);
+  };
+
   return (
     <div className="productlist">
       {products.map((product) => {
-        return <Product product={product} key={product.id} />;
+        return (
+          <Product {...product} key={product.id} getProduct={getProduct} />
+        );
       })}
     </div>
   );
 };
 
 const Product = (props) => {
-  console.log("PROPS", props);
-  const { img, price, title, altText } = props.product;
+  // console.log("PROPS", props);
+  const { img, price, title, altText, id, getProduct } = props;
+
+  const getSingleProduct = () => {
+    getProduct(id);
+  };
+
   return (
     <div className="product">
       <img className="avatar" src={img} alt={altText} />
       <h2 className="price">{price}</h2>
       <h2 className="title">{title}</h2>
+      <button onClick={getSingleProduct}>Get product</button>
     </div>
   );
 };

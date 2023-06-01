@@ -420,7 +420,7 @@ const Product = (props) => {
 };
 ```
 
-- Using spread operator 
+- Using spread operator to pass data.
 
 ```js
 const ProductList = () => {
@@ -441,6 +441,201 @@ const Product = (props) => {
       <img className="avatar" src={img} alt={altText} />
       <h2 className="price">{price}</h2>
       <h2 className="title">{title}</h2>
+    </div>
+  );
+};
+
+export default ProductList;
+```
+
+- passing function as props/data
+
+```js
+
+const ProductList = () => {
+  const someValue = "Excited";
+  const displaySomething = () => {
+    console.log(someValue);
+  };
+
+  return (
+    <div className="productlist">
+      {products.map((product) => {
+        return (
+          <Product
+            {...product}
+            key={product.id}
+            displaySomething={displaySomething}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+const Product = (props) => {
+  // console.log("PROPS", props);
+  const { img, price, title, altText, displaySomething } = props;
+  const showTitleOnClick = () => {
+    console.log(title);
+  };
+
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={altText} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+      <button onClick={showTitleOnClick}>Show Title</button>
+      <button onClick={displaySomething}>Click me</button>
+    </div>
+  );
+};
+
+export default ProductList;
+```
+
+- Event in React
+   - `onChange` 
+   - `onClick` 
+   - `onSubmit`
+
+```js
+const handleFormInput = (e) => {
+  console.log(e);
+  console.log(e.target.value);
+  console.log(e.target.name);
+  // console.log("handle form input");
+};
+
+const handleButtonClick = () => {
+  alert("handle button click");
+};
+
+const handleFormSubmission = (e) => {
+  e.preventDefault();
+  console.log("handle form submission")
+}
+
+const EventInReact = () => {
+  return (
+    <div style={{ textAlign: "center", marginTop: "4rem" }}>
+      <form onSubmit={handleFormSubmission}>
+        <h2>Form in React</h2>
+        <input
+          type="text"
+          name="eventExample"
+          // value={"myValue"}
+          placeholder="enter something"
+          style={{ margin: "1rem 0", padding: ".5rem" }}
+          onChange={handleFormInput}
+        />
+      </form>
+      <button onClick={handleButtonClick}>Click me</button>
+    </div>
+  );
+};
+
+```
+
+- Get a single product (method 1)
+  
+```js
+const products = [
+  {
+    img: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+    price: 22.9,
+    title: "Mens Casual Premium Slim Fit T-Shirts",
+    altText: "men's clothing",
+    id: 1,
+  },
+  {
+    img: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    price: 100.9,
+    title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    altText: "men's clothing",
+    id: 2,
+  },
+  {
+    img: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    price: 109.9,
+    title: "Mens Cotton Jacket",
+    altText: "men's clothing",
+    id: 3,
+  },
+];
+
+const ProductList = () => {
+  const getProduct = (id) => {
+    const findProduct = products.find((product) => product.id === id);
+    console.log(findProduct);
+  };
+
+  return (
+    <div className="productlist">
+      {products.map((product) => {
+        return (
+          <Product {...product} key={product.id} getProduct={getProduct} />
+        );
+      })}
+    </div>
+  );
+};
+
+const Product = (props) => {
+  // console.log("PROPS", props);
+  const { img, price, title, altText, id, getProduct } = props;
+
+  const getSingleProduct = () => {
+    getProduct(id);
+  };
+
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={altText} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+      <button onClick={getSingleProduct}>Get product</button>
+    </div>
+  );
+};
+
+export default ProductList;
+```
+
+- Get a single Product (method 2)
+
+```js
+const ProductList = () => {
+  const getProduct = (id) => {
+    const findProduct = products.find((product) => product.id === id);
+    console.log(findProduct);
+  };
+
+  return (
+    <div className="productlist">
+      {products.map((product) => {
+        return (
+          <Product {...product} key={product.id} getProduct={getProduct} />
+        );
+      })}
+    </div>
+  );
+};
+
+const Product = (props) => {
+  // console.log("PROPS", props);
+  const { img, price, title, altText, id, getProduct } = props;
+
+  const getSingleProduct = () => {
+    getProduct(id);
+  };
+
+  return (
+    <div className="product">
+      <img className="avatar" src={img} alt={altText} />
+      <h2 className="price">{price}</h2>
+      <h2 className="title">{title}</h2>
+      <button onClick={() => getProduct(id)}>Get product</button>
     </div>
   );
 };
