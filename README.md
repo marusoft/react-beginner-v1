@@ -5,15 +5,17 @@
 
 - React setup/Installation.
   
-  `npx create-react-app folderName`
+  `npx create-react-app appName`
 
   or
 
-  `yarn create react-app my-app`
+  `npx create-react-app@latest appName`
+
+  or
+
+  `yarn create react-app appName`
   
 - Folder Structure
-
-
 
 - Components 
   
