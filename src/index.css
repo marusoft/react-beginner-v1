@@ -19,6 +19,7 @@ body {
   background-color: #fff;
   padding: 20px;
   text-align: center;
+  position: relative;
 }
 .avatar {
   width: 70%;
@@ -28,6 +29,18 @@ body {
 .price,
 .title {
   text-align: center;
+  font-size: 1.1rem;
+}
+.number{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: .8rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: orange;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 @media (max-width: 768px) {

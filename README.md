@@ -715,3 +715,4 @@ export default ProductList;
 
 ```
 
+- How to setup local Images in `src` folder in React app for optimization
