@@ -1,7 +1,8 @@
 # Introduction to react
 - What is [React](https://create-react-app.dev/) used For?
   
-  A JavaScript library for building user interfaces.
+  A JavaScript library for building interactive user interfaces.
+  
 
 - React setup/Installation.
   
