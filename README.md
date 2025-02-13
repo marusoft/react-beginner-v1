@@ -6,15 +6,11 @@
 
 - React setup/Installation.
   
-  `npx create-react-app appName`
-
+  `npm create vite@latest foldername -- -- template react`
+  
   or
-
-  `npx create-react-app@latest appName`
-
-  or
-
-  `yarn create react-app appName`
+  
+  `npm create vite@latest ./ -- -- template react`
   
 - Folder Structure
 
